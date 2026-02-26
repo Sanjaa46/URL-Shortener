@@ -1,0 +1,108 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0d59f2b8;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center ;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #0d59f2;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+    max-width: 400px;
+
+}
+
+/* Generated QR Code Container */
+
+#qr-image {
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+
+/* Shortened URL Container */
+#url-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f4f4f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  transition: background 0.2s;
+}
+
+#url-container:hover {
+  background: #eef2ff;
+}
+
+#url-text {
+  color: #3366cc;
+  text-decoration: underline;
+  font-family: sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#copy-btn {
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+button:hover {
+  background: #4338ca;
+}
