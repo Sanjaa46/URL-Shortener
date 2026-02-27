@@ -2,6 +2,13 @@ services:
   web:
     image: sanjaa/url-shortener:latest
     restart: unless-stopped
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+  
+  redis:
+    image: redis:latest
+
   cloudflared:
     image: cloudflare/cloudflared:latest
     restart: unless-stopped
@@ -9,4 +16,4 @@ services:
     environment:
       - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
     depends_on:
-      - portfolio
+      - web
