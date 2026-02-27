@@ -12,6 +12,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+app.set("trust proxy", 1);
 const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
     max: 100, 
