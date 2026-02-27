@@ -22,7 +22,10 @@ const limiter = rateLimit({
 })
 
 app.use(limiter);
-app.use(cors());
+app.use(cors({
+  origin: "https://url.voicollo.com",
+  methods: ["GET", "POST"],
+}));
 app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 
