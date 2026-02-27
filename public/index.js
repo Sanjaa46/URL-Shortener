@@ -1,7 +1,6 @@
 const form = document.getElementById("url-form");
 const resultDiv = document.getElementById("result");
 const qrButton = document.getElementById("qr-button");
-const SERVER_URL = "http://localhost:3000";
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -10,7 +9,7 @@ form.addEventListener("submit", async (e) => {
   if (!url) return alert("Please enter a URL");
 
   try {
-    const res = await fetch(`${SERVER_URL}/shorten`, {
+    const res = await fetch('/shorten', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url }),
@@ -47,7 +46,7 @@ qrButton.addEventListener("click", async () => {
     if (!url) return alert("Please enter a URL");
 
     try {
-        const res = await fetch(`${SERVER_URL}/qr`, {
+        const res = await fetch('/qr', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),
