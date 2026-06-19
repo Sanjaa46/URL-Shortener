@@ -4,25 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
+
+    <!-- Primary meta -->
+    <title>Voicollo — Free URL Shortener</title>
+    <meta name="description" content="Shorten long URLs instantly and generate QR codes for free. Fast, simple, and no account required.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://url.voicollo.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://url.voicollo.com/">
+    <meta property="og:title" content="Voicollo — Free URL Shortener">
+    <meta property="og:description" content="Shorten long URLs instantly and generate QR codes for free. Fast, simple, and no account required.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Voicollo — Free URL Shortener">
+    <meta name="twitter:description" content="Shorten long URLs instantly and generate QR codes for free. Fast, simple, and no account required.">
+
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <script src="./index.js" defer></script>
 </head>
 
 <body>
+    <!-- Ambient background orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
     <div class="container">
-        <h1>URL Shortener</h1>
-        <form id="url-form">
-            <input type="text" id="long-url" name="url" placeholder="Enter URL (e.g., https://example.com)" required>
-            <div id="buttons">
-                <button type="submit">Shorten</button>
-                <button type="button" id="qr-button">Generate QR Code</button>
-            </div>
-        </form>
-        <div id="result">
+        <!-- Logo mark -->
+        <div class="logo-mark">
+            <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="link-left" d="M16 20C16 17.8 17.8 16 20 16H26C28.2 16 30 17.8 30 20C30 22.2 28.2 24 26 24H24" stroke="url(#grad1)" stroke-width="2.5" stroke-linecap="round"/>
+                <path class="link-right" d="M24 20C24 22.2 22.2 24 20 24H14C11.8 24 10 22.2 10 20C10 17.8 11.8 16 14 16H16" stroke="url(#grad1)" stroke-width="2.5" stroke-linecap="round"/>
+                <defs>
+                    <linearGradient id="grad1" x1="10" y1="20" x2="30" y2="20" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#818cf8"/>
+                        <stop offset="100%" stop-color="#34d399"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span class="logo-text">voicollo</span>
+        </div>
+
+        <p class="tagline">Paste long. Share short.</p>
+
+        <div class="card">
+            <form id="url-form">
+                <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 20 20" fill="none">
+                        <path d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zM7.414 15.414a2 2 0 11-2.828-2.828l3-3a2 2 0 012.828 0 1 1 0 001.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5z" fill="currentColor"/>
+                    </svg>
+                    <input type="text" id="long-url" name="url" placeholder="https://your-very-long-url.com/goes/here" required autocomplete="off" spellcheck="false">
+                    <kbd class="focus-hint">/</kbd>
+                </div>
+
+                <div id="buttons">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Shorten</span>
+                        <svg class="btn-icon" viewBox="0 0 20 20" fill="none">
+                            <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <button type="button" id="qr-button" class="btn btn-secondary">
+                        <svg class="btn-icon" viewBox="0 0 20 20" fill="none">
+                            <path d="M3 4a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 13a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1v-3zM12 3a1 1 0 00-1 1v3a1 1 0 001 1h3a1 1 0 001-1V4a1 1 0 00-1-1h-3z" fill="currentColor"/>
+                            <path d="M12 12h1v1h-1v-1zM14 14h1v1h-1v-1zM12 16h2v1h-2v-1zM16 12h1v3h-1v-3zM16 16h1v1h-1v-1z" fill="currentColor"/>
+                        </svg>
+                        <span class="btn-text">QR Code</span>
+                    </button>
+                </div>
+            </form>
+
+            <div id="result"></div>
         </div>
     </div>
+    <!-- Toast -->
+    <div id="toast"></div>
 </body>
 
 </html>

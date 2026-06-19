@@ -9,6 +9,7 @@ services:
   redis:
     image: redis:latest
     restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
 
   cloudflared:
     image: cloudflare/cloudflared:latest
