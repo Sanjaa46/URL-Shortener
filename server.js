@@ -43,17 +43,21 @@ const redis = new Redis({
 });
 
 // LMS logging client
-const lmsClient = new LMSClient({
-  baseUrl: process.env.LMS_BASE_URL,
-  serviceId: process.env.LMS_SERVICE_ID,
-  secret: process.env.LMS_SECRET,
-});
+let lmsClient = null;
 
-const SOURCE_SERVICE = "url-shortener";
-const ENVIRONMENT = process.env.NODE_ENV || "development";
+if (process.env.LMS_BASE_URL && process.env.LMS_SERVICE_ID && process.env.LMS_SECRET) {
+  lmsClient = new LMSClient({
+    baseUrl: process.env.LMS_BASE_URL,
+    serviceId: process.env.LMS_SERVICE_ID,
+    secret: process.env.LMS_SECRET,
+  });
+} else {
+  console.warn("[lms-logger] LMS_BASE_URL/LMS_SERVICE_ID/LMS_SECRET not set — app logging to LMS is disabled");
+}
 
-// Fire-and-forget INFO log — never blocks or breaks the request it describes
 function logAppInfo(message, { traceId, context } = {}) {
+  if (!lmsClient) return; // logging disabled, don't block or crash anything
+
   const req = new AppLogRequest({
     source_service: SOURCE_SERVICE,
     environment: ENVIRONMENT,
@@ -64,7 +68,6 @@ function logAppInfo(message, { traceId, context } = {}) {
   });
 
   lmsClient.logApp(req).catch((err) => {
-    // Never let logging failures affect the app — just log locally
     console.error("[lms-logger] failed to send app log:", err.message);
   });
 }

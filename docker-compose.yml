@@ -5,7 +5,10 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-  
+      - LMS_BASE_URL=${LMS_BASE_URL}
+      - LMS_SERVICE_ID=${LMS_SERVICE_ID}
+      - LMS_SECRET=${LMS_SECRET}
+
   redis:
     image: redis:latest
     restart: unless-stopped
