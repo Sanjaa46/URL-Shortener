@@ -3,13 +3,13 @@ services:
     image: sanjaa/url-shortener:latest
     restart: unless-stopped
     environment:
-      - REDIS_HOST=redis
+      - REDIS_HOST=redis-url-shortener
       - REDIS_PORT=6379
       - LMS_BASE_URL=${LMS_BASE_URL}
       - LMS_SERVICE_ID=${LMS_SERVICE_ID}
       - LMS_SECRET=${LMS_SECRET}
 
-  redis:
+  redis-url-shortener:
     image: redis:latest
     restart: unless-stopped
     command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
