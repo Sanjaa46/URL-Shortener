@@ -16,6 +16,7 @@
     "express-rate-limit": "^8.2.1",
     "ioredis": "^5.9.3",
     "qrcode": "^1.5.4",
-    "shortid": "^2.2.17"
+    "shortid": "^2.2.17",
+    "lms-logger": "github:Sanjaa46/voicollo_log_client_js"
   }
 }
