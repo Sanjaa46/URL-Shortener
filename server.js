@@ -44,6 +44,8 @@ const redis = new Redis({
 
 // LMS logging client
 let lmsClient = null;
+const SOURCE_SERVICE = process.env.LMS_SERVICE_ID || "url-shortener";
+const ENVIRONMENT = process.env.NODE_ENV || "development";
 
 if (process.env.LMS_BASE_URL && process.env.LMS_SERVICE_ID && process.env.LMS_SECRET) {
   lmsClient = new LMSClient({
