@@ -7,7 +7,7 @@ import cors from "cors";
 import { randomUUID } from "crypto";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import { LMSClient, AppLogRequest, LogLevel } from "voicollo_log_client_js";
+import { LMSClient, AppLogRequest, LogLevel } from "lms-logger";
 
 const app = express();
 
