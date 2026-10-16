@@ -1,0 +1,8 @@
+services:
+  web:
+    ports:
+      - "3000:3000"
+
+  redis-url-shortener:
+    ports:
+      - "6379:6379"
